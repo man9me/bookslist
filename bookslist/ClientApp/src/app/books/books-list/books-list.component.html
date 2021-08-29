@@ -1,0 +1,30 @@
+<h1 id="tableLabel">books</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+
+<p *ngIf="!booksData.books"><em>Loading...</em></p>
+<p> !!! {{isAuthenticated}}</p>
+<table class='table table-striped' aria-labelledby="tableLabel" *ngIf="booksData.books">
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>Title.</th> 
+      <th>Description.</th>
+      <th *ngIf="isAuthenticated">IsRead</th>
+    </tr>
+  </thead>
+   
+  <tbody>
+    <tr *ngFor="let book of booksData.books" (click)=" !isAuthenticated || readToggle(book)">
+      <td>{{ book.id }}</td>
+      <td>{{ book.title }}</td>
+      <td>{{  book.description }}</td>
+      <td *ngIf="isAuthenticated" >  <p>{{booksData.mybookslist.has(book.id)? 'Yes' : 'No'}}  </p><td>
+
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+<div *ngIf="book1"> <h1>{{book1.titile}}</h1></div>
+
